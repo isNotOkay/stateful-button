@@ -6,11 +6,13 @@ import {MatButtonModule, MatFormFieldModule, MatIconModule, MatInputModule, MatP
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { StatefulButtonComponent } from './stateful-button/stateful-button.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import { RegistrationComponent } from './registration/registration.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    StatefulButtonComponent
+    StatefulButtonComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
