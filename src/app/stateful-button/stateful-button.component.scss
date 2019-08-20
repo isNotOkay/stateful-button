@@ -19,6 +19,10 @@ button {
     background: green !important;
   }
 
+  &.error {
+    background: red !important;
+  }
+
   &[disabled] {
     color: white !important;
   }

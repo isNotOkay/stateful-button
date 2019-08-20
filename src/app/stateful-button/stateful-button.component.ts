@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-stateful-button',
@@ -6,7 +6,7 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./stateful-button.component.scss'],
 })
 export class StatefulButtonComponent implements OnInit {
-  state = 'idle';
+  @Input() state: string;
 
 
   constructor() {
@@ -16,12 +16,13 @@ export class StatefulButtonComponent implements OnInit {
   }
 
   load() {
-    this.state = 'busy';
+/*    this.state = 'busy';
     setTimeout(() => {
-      this.state = 'success';
+      //this.state = 'success';
+      this.state = 'error';
       setTimeout(() => {
         this.state = 'idle';
       }, 1000);
-    }, 500);
+    }, 500);*/
   }
 }

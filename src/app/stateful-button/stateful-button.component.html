@@ -1,11 +1,12 @@
 <button mat-raised-button color="primary"
-        [ngClass]="{success: state === 'success'}"
-        [disabled]="state === 'busy' || state === 'success'"
+        [ngClass]="{success: state === 'success', error: state === 'error'}"
+        [disabled]="state !== 'idle'"
         (click)="load()">
   <span  [ngClass]="{hidden: state !== 'idle'}">Speichern</span>
-  <div *ngIf="state === 'busy' || state === 'success'" class="overlay" fxLayout fxLayoutAlign="center center">
+  <div *ngIf="state !== 'idle'" class="overlay" fxLayout fxLayoutAlign="center center">
     <mat-spinner *ngIf="state === 'busy'" strokeWidth="3" diameter="20" color="accent"></mat-spinner>
     <mat-icon *ngIf="state === 'success'">done</mat-icon>
+    <mat-icon *ngIf="state === 'error'">error_outline</mat-icon>
   </div>
 </button>
 
