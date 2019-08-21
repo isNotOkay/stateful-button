@@ -1,18 +1,17 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
-import { AppComponent } from './app.component';
-import {MatButtonModule, MatFormFieldModule, MatIconModule, MatInputModule, MatProgressSpinnerModule} from '@angular/material';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { StatefulButtonComponent } from './stateful-button/stateful-button.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
-import { RegistrationComponent } from './registration/registration.component';
+import {MatButtonModule, MatFormFieldModule, MatIconModule, MatInputModule, MatProgressSpinnerModule} from '@angular/material';
+import {AppComponent} from './app.component';
+import {StatefulButtonComponent} from './stateful-button/stateful-button.component';
+import {RegistrationComponent} from './registration/registration.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     StatefulButtonComponent,
-    RegistrationComponent
+    RegistrationComponent,
   ],
   imports: [
     BrowserModule,
@@ -22,9 +21,10 @@ import { RegistrationComponent } from './registration/registration.component';
     MatIconModule,
     FlexLayoutModule,
     MatButtonModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {
+}
