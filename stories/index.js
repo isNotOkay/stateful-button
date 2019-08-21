@@ -25,7 +25,6 @@ storiesOf('Stateful Button', module)
   .addDecorator(
     moduleMetadata({
       declarations: [
-        StatefulButtonComponent
       ],
       imports: [
         BrowserModule,
