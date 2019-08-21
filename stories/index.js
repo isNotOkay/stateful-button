@@ -20,7 +20,7 @@ const states = {
   Error: StatefulButtonState.error
 };
 
-storiesOf('Storybook Knobs', module)
+storiesOf('Stateful Button', module)
   .addDecorator(withKnobs)
   .addDecorator(
     moduleMetadata({
