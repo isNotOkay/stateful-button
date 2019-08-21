@@ -12,19 +12,19 @@ button {
     height: 100%;
   }
 
+  &.success.mat-raised-button[disabled] {
+    background: green;
+  }
+
+  &.error.mat-raised-button[disabled] {
+    background: red;
+  }
+
+  &[disabled].mat-raised-button {
+    color: white;
+  }
+
   .hidden {
     opacity: 0;
-  }
-
-  &.success {
-    background: green !important;
-  }
-
-  &.error {
-    background: red !important;
-  }
-
-  &[disabled] {
-    color: white !important;
   }
 }
