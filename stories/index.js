@@ -30,11 +30,11 @@ storiesOf('Storybook Knobs', module)
       imports: [
         BrowserModule,
         BrowserAnimationsModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatIconModule,
         FlexLayoutModule,
         MatButtonModule,
+        MatIconModule,
+        MatInputModule,
+        MatFormFieldModule,
         MatProgressSpinnerModule
       ],
     }))

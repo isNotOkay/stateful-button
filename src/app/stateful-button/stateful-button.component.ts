@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {StatefulButtonState} from './statefulButtonState';
 
 @Component({
@@ -6,21 +6,11 @@ import {StatefulButtonState} from './statefulButtonState';
   templateUrl: './stateful-button.component.html',
   styleUrls: ['./stateful-button.component.scss'],
 })
-export class StatefulButtonComponent implements OnChanges {
+export class StatefulButtonComponent {
   @Input() public state: StatefulButtonState;
+  // Make this enum accessible in the html template.
   public StatefulButtonState = StatefulButtonState;
 
   constructor() {
   }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes.state && changes.state.currentValue) {
-      if (this.state === StatefulButtonState.success || this.state === StatefulButtonState.error) {
-        setTimeout(() => {
-          this.state = StatefulButtonState.idle;
-        }, 800);
-      }
-    }
-  }
-
 }

@@ -1,5 +1,5 @@
 
-button {
+.mat-raised-button {
   width: 100%;
   position: relative;
 
@@ -12,15 +12,15 @@ button {
     height: 100%;
   }
 
-  &.success.mat-raised-button[disabled] {
+  &.success[disabled] {
     background: green;
   }
 
-  &.error.mat-raised-button[disabled] {
+  &.error[disabled] {
     background: red;
   }
 
-  &[disabled].mat-raised-button {
+  &[disabled] {
     color: white;
   }
 
