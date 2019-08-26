@@ -46,9 +46,6 @@ storiesOf('Stateful Button', module)
         {provide: HttpClient, useClass: MyHttpClientService}
       ]
     }))
-  .add('form', () => ({
-    component: RegistrationComponent
-  }))
   .add('interactive', () => ({
     component: StatefulButtonComponent,
     props: {
