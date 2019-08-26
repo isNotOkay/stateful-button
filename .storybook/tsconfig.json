@@ -1,7 +1,8 @@
 {
-/*  "compilerOptions": {
+  // This compiler option is important. DI doesn't work with Angular 8 otherwise!
+  "compilerOptions": {
     "emitDecoratorMetadata": true
-  },*/
+  },
   "extends": "../tsconfig.json",
   "exclude": [
     "../src/test.ts",

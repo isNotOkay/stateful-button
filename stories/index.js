@@ -12,6 +12,10 @@ import {moduleMetadata, storiesOf} from '@storybook/angular';
 import {radios, withKnobs} from '@storybook/addon-knobs';
 import {StatefulButtonComponent} from '../src/app/stateful-button/stateful-button.component';
 import {StatefulButtonState} from "../src/app/stateful-button/statefulButtonState";
+import {HttpClient} from '@angular/common/http';
+import {RegistrationComponent} from "../src/app/registration/registration.component";
+import {MyHttpClientService} from "./mocks/my-http-cllient.service";
+
 
 const states = {
   Idle: StatefulButtonState.idle,
@@ -25,6 +29,7 @@ storiesOf('Stateful Button', module)
   .addDecorator(
     moduleMetadata({
       declarations: [
+        StatefulButtonComponent
       ],
       imports: [
         BrowserModule,
@@ -36,7 +41,14 @@ storiesOf('Stateful Button', module)
         MatFormFieldModule,
         MatProgressSpinnerModule
       ],
+      providers: [
+        MyHttpClientService,
+        {provide: HttpClient, useClass: MyHttpClientService}
+      ]
     }))
+  .add('form', () => ({
+    component: RegistrationComponent
+  }))
   .add('interactive', () => ({
     component: StatefulButtonComponent,
     props: {
