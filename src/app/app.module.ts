@@ -6,6 +6,8 @@ import {MatButtonModule, MatFormFieldModule, MatIconModule, MatInputModule, MatP
 import {AppComponent} from './app.component';
 import {StatefulButtonComponent} from './stateful-button/stateful-button.component';
 import {RegistrationComponent} from './registration/registration.component';
+import {HTTP_INTERCEPTORS} from '@angular/common/http';
+import {InterceptorService} from '../../stories/mocks/interceptor.service';
 
 @NgModule({
   declarations: [
@@ -23,8 +25,7 @@ import {RegistrationComponent} from './registration/registration.component';
     MatButtonModule,
     MatProgressSpinnerModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
 export class AppModule {
 }

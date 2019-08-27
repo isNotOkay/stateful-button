@@ -12,9 +12,10 @@ import {moduleMetadata, storiesOf} from '@storybook/angular';
 import {radios, withKnobs} from '@storybook/addon-knobs';
 import {StatefulButtonComponent} from '../src/app/stateful-button/stateful-button.component';
 import {StatefulButtonState} from "../src/app/stateful-button/statefulButtonState";
-import {HttpClient} from '@angular/common/http';
-import {RegistrationComponent} from "../src/app/registration/registration.component";
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 import {MyHttpClientService} from "./mocks/my-http-cllient.service";
+import {InterceptorService} from "./mocks/interceptor.service";
+import {RegistrationComponent} from "../src/app/registration/registration.component";
 
 
 const states = {
@@ -39,11 +40,17 @@ storiesOf('Stateful Button', module)
         MatIconModule,
         MatInputModule,
         MatFormFieldModule,
-        MatProgressSpinnerModule
+        MatProgressSpinnerModule,
+        HttpClientModule
       ],
       providers: [
         MyHttpClientService,
-        {provide: HttpClient, useClass: MyHttpClientService}
+      /*  {provide: HttpClient, useClass: MyHttpClientService},*/
+   /*     {
+          provide: HTTP_INTERCEPTORS,
+          useClass: InterceptorService,
+          multi: true
+        }*/
       ]
     }))
   .add('interactive', () => ({
