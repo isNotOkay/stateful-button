@@ -11,7 +11,7 @@ export class LoginFormComponent implements OnInit {
   public state = StatefulButtonState.idle;
 
   constructor(private httpClient: HttpClient) {
-    this.httpClient.post('login', {observe: 'response'}).subscribe((httpResponse: HttpResponse<any>) => {
+    this.httpClient.post('login', {}, {observe: 'response'}).subscribe((httpResponse: HttpResponse<any>) => {
       console.log('=== retrieved fake login response ===');
       console.log(httpResponse);
       console.log(httpResponse.status);
