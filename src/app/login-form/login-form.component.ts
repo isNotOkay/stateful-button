@@ -9,22 +9,25 @@ import {StatefulButtonState} from '../stateful-button/statefulButtonState';
 })
 export class LoginFormComponent implements OnInit {
   public state = StatefulButtonState.idle;
+  public hide = true;
 
   constructor(private httpClient: HttpClient) {
-    this.httpClient.post('login', {}, {observe: 'response'}).subscribe((httpResponse: HttpResponse<any>) => {
-      console.log('=== retrieved fake login response ===');
-      console.log(httpResponse);
-      console.log(httpResponse.status);
-    });
   }
 
   ngOnInit() {
   }
 
-  onClick() {
+  login() {
     this.state = StatefulButtonState.busy;
-    setTimeout(() => {
+    this.httpClient.post('login', {
+      username: 'kayosh',
+      password: 'secret',
+    }, {observe: 'response'}).subscribe((httpResponse: HttpResponse<any>) => {
       this.state = StatefulButtonState.success;
-    }, 1000);
+      console.log('=== retrieved fake login response ===');
+      console.log(httpResponse);
+      console.log(httpResponse.status);
+    });
+
   }
 }

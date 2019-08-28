@@ -1,2 +1,17 @@
-<h2>Register</h2>
-<app-stateful-button [state]="state" (click)="onClick()"></app-stateful-button>
+<h2>Login</h2>
+
+
+<form fxLayout="column">
+  <mat-form-field appearance="outline">
+    <mat-label>Username</mat-label>
+    <input matInput>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Password</mat-label>
+    <input matInput [type]="hide ? 'password' : 'text'">
+    <button mat-icon-button matSuffix (click)="hide = !hide">
+      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+  </mat-form-field>
+</form>
+<app-stateful-button [state]="state" (click)="login()"></app-stateful-button>
