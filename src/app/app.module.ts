@@ -5,15 +5,13 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import {MatButtonModule, MatFormFieldModule, MatIconModule, MatInputModule, MatProgressSpinnerModule} from '@angular/material';
 import {AppComponent} from './app.component';
 import {StatefulButtonComponent} from './stateful-button/stateful-button.component';
-import {RegistrationComponent} from './registration/registration.component';
-import {HTTP_INTERCEPTORS} from '@angular/common/http';
-import {InterceptorService} from '../../stories/mocks/interceptor.service';
+import {LoginFormComponent} from './login-form/login-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     StatefulButtonComponent,
-    RegistrationComponent,
+    LoginFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -25,7 +23,7 @@ import {InterceptorService} from '../../stories/mocks/interceptor.service';
     MatButtonModule,
     MatProgressSpinnerModule,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {
 }
