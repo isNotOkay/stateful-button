@@ -12,9 +12,9 @@ import {moduleMetadata, storiesOf} from '@storybook/angular';
 import {withKnobs} from '@storybook/addon-knobs';
 import {StatefulButtonComponent} from '../src/app/stateful-button/stateful-button.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import {MyHttpClientService} from "./mocks/my-http-cllient.service";
 import {InterceptorService} from "./mocks/interceptor.service";
-import {LoginFormComponent} from "../src/app/login-form/login-form.component";
+import {EditFormComponent} from "../src/app/edit-form/edit-form.component";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 storiesOf('Login Form', module)
   .addDecorator(withKnobs)
@@ -32,11 +32,11 @@ storiesOf('Login Form', module)
         MatInputModule,
         MatFormFieldModule,
         MatProgressSpinnerModule,
-        HttpClientModule
+        HttpClientModule,
+        FormsModule,
+        ReactiveFormsModule
       ],
       providers: [
-        MyHttpClientService,
-        /*  {provide: HttpClient, useClass: MyHttpClientService},*/
         {
           provide: HTTP_INTERCEPTORS,
           useClass: InterceptorService,
@@ -45,6 +45,6 @@ storiesOf('Login Form', module)
       ]
     }))
   .add('Login Form', () => ({
-    component: LoginFormComponent,
+    component: EditFormComponent,
   }));
 

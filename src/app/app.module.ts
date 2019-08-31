@@ -2,16 +2,24 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FlexLayoutModule} from '@angular/flex-layout';
-import {MatButtonModule, MatFormFieldModule, MatIconModule, MatInputModule, MatProgressSpinnerModule} from '@angular/material';
+import {
+  MAT_LABEL_GLOBAL_OPTIONS,
+  MatButtonModule,
+  MatFormFieldModule,
+  MatIconModule,
+  MatInputModule,
+  MatProgressSpinnerModule
+} from '@angular/material';
 import {AppComponent} from './app.component';
 import {StatefulButtonComponent} from './stateful-button/stateful-button.component';
-import {LoginFormComponent} from './login-form/login-form.component';
+import {EditFormComponent} from './edit-form/edit-form.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     StatefulButtonComponent,
-    LoginFormComponent,
+    EditFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -22,6 +30,7 @@ import {LoginFormComponent} from './login-form/login-form.component';
     FlexLayoutModule,
     MatButtonModule,
     MatProgressSpinnerModule,
+    ReactiveFormsModule
   ],
   bootstrap: [AppComponent],
 })

@@ -1,0 +1,22 @@
+<div fxLayout fxLayoutAlign="center">
+  <div class="login-component" (keyup.enter)="save()">
+    <h2>Edit Personal Information</h2>
+
+    <form fxLayout="column" [formGroup]="form">
+      <mat-form-field appearance="outline">
+        <mat-label>Firstname</mat-label>
+        <input matInput formControlName="firstname">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Lastname</mat-label>
+        <input matInput formControlName="lastname">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email">
+      </mat-form-field>
+
+    </form>
+    <app-stateful-button label="Save" (click)="save()"></app-stateful-button>
+  </div>
+</div>

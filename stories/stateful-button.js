@@ -13,9 +13,7 @@ import {radios, withKnobs} from '@storybook/addon-knobs';
 import {StatefulButtonComponent} from '../src/app/stateful-button/stateful-button.component';
 import {StatefulButtonState} from "../src/app/stateful-button/statefulButtonState";
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import {MyHttpClientService} from "./mocks/my-http-cllient.service";
 import {InterceptorService} from "./mocks/interceptor.service";
-import {LoginFormComponent} from "../src/app/login-form/login-form.component";
 
 const states = {
   Idle: StatefulButtonState.idle,
@@ -40,11 +38,9 @@ storiesOf('Stateful Button', module)
         MatInputModule,
         MatFormFieldModule,
         MatProgressSpinnerModule,
-        HttpClientModule
+        HttpClientModule,
       ],
       providers: [
-        MyHttpClientService,
-      /*  {provide: HttpClient, useClass: MyHttpClientService},*/
         {
           provide: HTTP_INTERCEPTORS,
           useClass: InterceptorService,
@@ -52,9 +48,6 @@ storiesOf('Stateful Button', module)
         }
       ]
     }))
-  .add('component', () => ({
-    component: LoginFormComponent,
-  }))
   .add('interactive', () => ({
     component: StatefulButtonComponent,
     props: {

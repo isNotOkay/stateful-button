@@ -3,6 +3,10 @@ import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/com
 import {Observable} from 'rxjs';
 import {delay} from 'rxjs/operators';
 
+/**
+ * Interceptor for mocking HTTP requests that's used exclusively by storybook.
+ */
+
 @Injectable({
   providedIn: 'root',
 })
@@ -33,15 +37,9 @@ export class InterceptorService implements HttpInterceptor {
    */
   private determineMockFileUrl(req: HttpRequest<any>): string {
     let url;
-    if (req.url === 'login') {
-      if (req.method === 'POST') {
-        url = 'login';
-      }
-    } else if (req.url === 'users') {
-      if (req.method === 'GET') {
-        url = 'users';
-      } else if (req.method === 'POST') {
-        url = 'created_user';
+    if (req.url === 'user') {
+      if (req.method === 'GET' || req.method === 'PUT') {
+        url = 'user';
       }
     }
     return `${url}.json`;

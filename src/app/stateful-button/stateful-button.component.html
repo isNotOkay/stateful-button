@@ -2,7 +2,7 @@
         [ngClass]="{success: state === StatefulButtonState.success, error: state === StatefulButtonState.error}"
         [disabled]="state !== StatefulButtonState.idle"
 >
-  <span [ngClass]="{hidden: state !== StatefulButtonState.idle}">Submit</span>
+  <span [ngClass]="{hidden: state !== StatefulButtonState.idle}">{{label}}</span>
   <div *ngIf="state !== StatefulButtonState.idle" class="overlay" fxLayout fxLayoutAlign="center center">
     <mat-spinner *ngIf="state === StatefulButtonState.busy" strokeWidth="3" diameter="20" color="accent"></mat-spinner>
     <mat-icon *ngIf="state === StatefulButtonState.success">done</mat-icon>

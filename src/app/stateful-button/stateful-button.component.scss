@@ -13,11 +13,11 @@
   }
 
   &.success[disabled] {
-    background: green;
+    background: #4caf50;
   }
 
   &.error[disabled] {
-    background: red;
+    background: #f44336;
   }
 
   &[disabled] {
