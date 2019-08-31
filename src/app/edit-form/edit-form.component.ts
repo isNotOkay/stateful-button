@@ -5,7 +5,7 @@ import {User} from '../models/User';
 import {StatefulButtonComponent} from '../stateful-button/stateful-button.component';
 
 @Component({
-  selector: 'app-login-form',
+  selector: 'app-edit-form',
   templateUrl: './edit-form.component.html',
   styleUrls: ['./edit-form.component.scss'],
 })

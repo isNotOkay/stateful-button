@@ -16,7 +16,7 @@ import {InterceptorService} from "./mocks/interceptor.service";
 import {EditFormComponent} from "../src/app/edit-form/edit-form.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
-storiesOf('Login Form', module)
+storiesOf('Edit Form', module)
   .addDecorator(withKnobs)
   .addDecorator(
     moduleMetadata({
@@ -44,7 +44,7 @@ storiesOf('Login Form', module)
         }
       ]
     }))
-  .add('Login Form', () => ({
+  .add('Edit Form', () => ({
     component: EditFormComponent,
   }));
 
