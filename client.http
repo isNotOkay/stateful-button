@@ -1,0 +1,10 @@
+POST localhost:3000/users
+Content-Type: application/json
+
+{
+  "id": "456",
+  "firstname": "firstname",
+  "lastname": "lastname"
+}
+
+###
