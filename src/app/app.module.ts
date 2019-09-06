@@ -14,12 +14,14 @@ import {AppComponent} from './app.component';
 import {StatefulButtonComponent} from './stateful-button/stateful-button.component';
 import {EditFormComponent} from './edit-form/edit-form.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import { CreateFormComponent } from './create-form/create-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     StatefulButtonComponent,
     EditFormComponent,
+    CreateFormComponent,
   ],
   imports: [
     BrowserModule,

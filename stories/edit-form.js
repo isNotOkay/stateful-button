@@ -15,6 +15,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {InterceptorService} from "./mocks/interceptor.service";
 import {EditFormComponent} from "../src/app/edit-form/edit-form.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {CreateFormComponent} from "../src/app/create-form/create-form.component";
 
 storiesOf('Edit Form', module)
   .addDecorator(withKnobs)
@@ -37,14 +38,17 @@ storiesOf('Edit Form', module)
         ReactiveFormsModule
       ],
       providers: [
-        {
+       /* {
           provide: HTTP_INTERCEPTORS,
           useClass: InterceptorService,
           multi: true
-        }
+        }*/
       ]
     }))
   .add('Edit Form', () => ({
     component: EditFormComponent,
+  }))
+  .add('Create Form', () => ({
+    component: CreateFormComponent,
   }));
 

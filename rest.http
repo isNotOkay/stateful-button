@@ -1,0 +1,15 @@
+
+
+POST http://localhost:3000/users
+Content-Type: application/json
+Access-Control-Allow-Origin: *
+
+{
+  "id": "123",
+  "firstname": "Hans",
+  "lastname": "Peter",
+  "email": "Hans.Peter@gmx.de",
+  "telephone": "0221458963"
+}
+
+###
