@@ -16,6 +16,7 @@ import {InterceptorService} from "./mocks/interceptor.service";
 import {EditFormComponent} from "../src/app/edit-form/edit-form.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {CreateFormComponent} from "../src/app/create-form/create-form.component";
+import {MatBadgeModule} from "@angular/material/badge";
 
 storiesOf('Edit Form', module)
   .addDecorator(withKnobs)
@@ -35,7 +36,8 @@ storiesOf('Edit Form', module)
         MatProgressSpinnerModule,
         HttpClientModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        MatBadgeModule
       ],
       providers: [
        /* {

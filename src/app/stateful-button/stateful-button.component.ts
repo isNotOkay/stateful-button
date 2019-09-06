@@ -12,11 +12,7 @@ export class StatefulButtonComponent {
    * Specifies how long the result state is being displayed before returning back to the IDLE state.
    */
   @Input() resultStateDuration = 650;
-  /**
-   * Specifies the duration of the state transition from BUSY to SUCCESS/ERROR.
-   * Use this to have a smoother transition for requests that have a very low latency.
-   */
-  @Input() busyToResultStateDelay = 650;
+
   // Make this enum accessible in the html template.
   public StatefulButtonState = StatefulButtonState;
   private state: StatefulButtonState;
@@ -30,17 +26,13 @@ export class StatefulButtonComponent {
   }
 
   public success() {
-    setTimeout(() => {
-      this.state = StatefulButtonState.success;
-      this.idle();
-    }, this.busyToResultStateDelay);
+    this.state = StatefulButtonState.success;
+    this.idle();
   }
 
   public error() {
-    setTimeout(() => {
-      this.state = StatefulButtonState.error;
-      this.idle();
-    }, this.busyToResultStateDelay);
+    this.state = StatefulButtonState.error;
+    this.idle();
   }
 
   /**

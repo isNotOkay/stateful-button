@@ -1,22 +1,25 @@
 <div class="create-component" (keyup.enter)="save()">
-  <h2>Create User</h2>
+  <h2>Create User <mat-icon [matBadge]="userCount" matBadgeColor="warn">account_circled</mat-icon></h2>
 
   <form fxLayout="column" [formGroup]="form">
     <mat-form-field appearance="outline">
       <mat-label>Firstname</mat-label>
-      <input matInput formControlName="firstname">
+      <input matInput #firstname formControlName="firstname" required>
+      <mat-error *ngIf="form.get('firstname').errors?.serverError">
+        {{ form.get('firstname').errors?.serverError }}
+      </mat-error>
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Lastname</mat-label>
-      <input matInput formControlName="lastname">
+      <input matInput #lastname formControlName="lastname">
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Email</mat-label>
-      <input matInput formControlName="email">
+      <input matInput #email formControlName="email">
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Telephone</mat-label>
-      <input matInput formControlName="telephone">
+      <input matInput #telephone formControlName="telephone">
     </mat-form-field>
   </form>
   <app-stateful-button label="Save" (click)="save()"></app-stateful-button>
