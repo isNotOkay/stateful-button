@@ -1,4 +1,4 @@
-<div class="create-component" (keyup.enter)="save()">
+<div class="create-component" (keyup.enter)="onKeyUpEnter()">
   <h2>Create User <mat-icon [matBadge]="userCount" matBadgeColor="warn">account_circled</mat-icon></h2>
 
   <form fxLayout="column" [formGroup]="form">
@@ -22,6 +22,10 @@
       <input matInput #telephone formControlName="telephone">
     </mat-form-field>
   </form>
-  <app-stateful-button label="Save" (click)="save()"></app-stateful-button>
+  <app-stateful-button label="Save"
+                       (click)="save()"
+                       (stateChange)="onStateChange($event)"
+  >
+  </app-stateful-button>
 </div>
 

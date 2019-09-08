@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {StatefulButtonState} from './statefulButtonState';
 
 @Component({
@@ -12,6 +12,7 @@ export class StatefulButtonComponent {
    * Specifies how long the result state is being displayed before returning back to the IDLE state.
    */
   @Input() resultStateDuration = 650;
+  @Output() stateChange: EventEmitter<StatefulButtonState> = new EventEmitter<StatefulButtonState>();
 
   // Make this enum accessible in the html template.
   public StatefulButtonState = StatefulButtonState;
@@ -23,15 +24,18 @@ export class StatefulButtonComponent {
 
   public busy() {
     this.state = StatefulButtonState.busy;
+    this.stateChange.emit(StatefulButtonState.busy);
   }
 
   public success() {
     this.state = StatefulButtonState.success;
+    this.stateChange.emit(StatefulButtonState.success);
     this.idle();
   }
 
   public error() {
     this.state = StatefulButtonState.error;
+    this.stateChange.emit(StatefulButtonState.error);
     this.idle();
   }
 
@@ -41,6 +45,7 @@ export class StatefulButtonComponent {
   private idle() {
     setTimeout(() => {
       this.state = StatefulButtonState.idle;
+      this.stateChange.emit(StatefulButtonState.idle);
     }, this.resultStateDuration);
   }
 }

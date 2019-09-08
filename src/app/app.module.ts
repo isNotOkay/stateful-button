@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {
-  MAT_LABEL_GLOBAL_OPTIONS,
+  MAT_LABEL_GLOBAL_OPTIONS, MatBadgeModule,
   MatButtonModule,
   MatFormFieldModule,
   MatIconModule,
@@ -31,6 +31,7 @@ import { CreateFormComponent } from './create-form/create-form.component';
     MatIconModule,
     FlexLayoutModule,
     MatButtonModule,
+    MatBadgeModule,
     MatProgressSpinnerModule,
     ReactiveFormsModule
   ],
