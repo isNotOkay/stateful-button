@@ -1,15 +1,31 @@
-import {Component, ElementRef, ViewChild} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {StatefulButtonComponent} from '../stateful-button/stateful-button.component';
 import {FormControl, FormGroup} from '@angular/forms';
 import {HttpClient, HttpResponse} from '@angular/common/http';
 import {StatefulButtonState} from '../stateful-button/statefulButtonState';
+import {animate, sequence, state, style, transition, trigger} from '@angular/animations';
 
 @Component({
   selector: 'app-create-form',
   templateUrl: './create-form.component.html',
-  styleUrls: ['./create-form.component.scss']
+  styleUrls: ['./create-form.component.scss'],
+  animations: [
+    trigger('scale', [
+      state('scale', style({})),
+      transition('true <=> false', [
+        sequence([
+          animate('0.4s ease', style({
+            transform: 'scale(1.3)'
+          })),
+          animate('0.4s ease', style({
+            transform: 'scale(1.0)'
+          }))
+        ])
+      ])
+    ])
+  ]
 })
-export class CreateFormComponent {
+export class CreateFormComponent implements OnInit {
   @ViewChild(StatefulButtonComponent, {static: false})
   public statefulButton: StatefulButtonComponent;
   @ViewChild('firstname', {static: false})
@@ -17,13 +33,14 @@ export class CreateFormComponent {
   public form: FormGroup;
   public userCount: string;
   public loading: boolean;
+  public scale = false;
 
   constructor(private httpClient: HttpClient) {
     this.form = new FormGroup({
       firstname: new FormControl(''),
       lastname: new FormControl(''),
       email: new FormControl(''),
-      telephone: new FormControl(''),
+      telephone: new FormControl('')
     });
   }
 
@@ -38,15 +55,11 @@ export class CreateFormComponent {
       firstname: this.form.get('firstname').value,
       lastname: this.form.get('lastname').value,
       email: this.form.get('email').value,
-      telephone: this.form.get('telephone').value,
+      telephone: this.form.get('telephone').value
     }, {observe: 'response'}).subscribe(
       (httpResponse: HttpResponse<any>) => {
         this.statefulButton.success();
-
-        this.httpClient.get('http://localhost:3000/users', {observe: 'response'})
-          .subscribe((res: HttpResponse<any>) => {
-            this.userCount = res.body.length.toString();
-          });
+        this.loadUsers(true);
 
       }, (err: any) => {
         // @TODO: adjust this for all input types
@@ -55,6 +68,16 @@ export class CreateFormComponent {
           serverError: err.error.firstname
         });
         this.firstnameInputElement.nativeElement.focus();
+      });
+  }
+
+  private loadUsers(toggleScale: boolean = false) {
+    this.httpClient.get('http://localhost:3000/users', {observe: 'response'})
+      .subscribe((res: HttpResponse<any>) => {
+        this.userCount = res.body.length.toString();
+        if (toggleScale) {
+          this.toggleScale();
+        }
       });
   }
 
@@ -73,5 +96,13 @@ export class CreateFormComponent {
     if (!this.loading) {
       this.save();
     }
+  }
+
+  private toggleScale() {
+    this.scale = !this.scale;
+  }
+
+  ngOnInit(): void {
+    this.loadUsers();
   }
 }

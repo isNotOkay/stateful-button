@@ -18,13 +18,13 @@ app.use(cors());
 
 app.post('/users', function (req, res) {
   // validation
-  if (!req.body.firstname) {
+/*  if (!req.body.firstname) {
     res.status(400).send({firstname: 'required'});
   } else if (!req.body.lastname) {
     res.status(400).send({lastname: 'required'});
   } else if (!req.body.email) {
     res.status(400).send({email: 'required'});
-  }
+  }*/
 
   const user = {
     id: req.body.id,
