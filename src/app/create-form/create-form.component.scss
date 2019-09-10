@@ -1,8 +1,15 @@
 
+.container {
+  padding: 15px 50px;
+}
+
 .create-form {
   width: 100%;
+  max-width: 600px;
 
-  mat-icon {
-    margin-right: 30px;
+  .icon, h2 {
+    color: #1a237e;
   }
+
+
 }

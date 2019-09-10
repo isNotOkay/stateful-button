@@ -14,10 +14,10 @@ import {animate, sequence, state, style, transition, trigger} from '@angular/ani
       state('scale', style({})),
       transition('true <=> false', [
         sequence([
-          animate('0.4s ease', style({
+          animate('0.3s ease', style({
             transform: 'scale(1.3)'
           })),
-          animate('0.4s ease', style({
+          animate('0.3s ease', style({
             transform: 'scale(1.0)'
           }))
         ])

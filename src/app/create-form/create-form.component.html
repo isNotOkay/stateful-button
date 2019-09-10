@@ -1,34 +1,38 @@
-<div class="create-form" (keyup.enter)="onKeyUpEnter()">
-  <div fxLayout fxLayoutAlign="space-between center">
-    <h2>Create User</h2>
-    <mat-icon class="icon" [@scale]="scale" [matBadge]="userCount" matBadgeColor="warn">account_circled</mat-icon>
-  </div>
 
-  <form fxLayout="column" [formGroup]="form">
-    <mat-form-field appearance="outline">
-      <mat-label>Firstname</mat-label>
-      <input matInput #firstname formControlName="firstname">
-      <mat-error *ngIf="form.get('firstname').errors?.serverError">
-        {{ form.get('firstname').errors?.serverError }}
-      </mat-error>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <mat-label>Lastname</mat-label>
-      <input matInput #lastname formControlName="lastname">
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <mat-label>Email</mat-label>
-      <input matInput #email formControlName="email">
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <mat-label>Telephone</mat-label>
-      <input matInput #telephone formControlName="telephone">
-    </mat-form-field>
-  </form>
-  <app-stateful-button label="Save"
-                       (click)="save()"
-                       (stateChange)="onStateChange($event)"
-  >
-  </app-stateful-button>
+<div class="container" fxLayout fxLayoutAlign="center">
+  <div class="create-form" (keyup.enter)="onKeyUpEnter()">
+    <div fxLayout fxLayoutAlign="space-between center">
+      <h2>Create User</h2>
+      <mat-icon class="icon" [@scale]="scale" [matBadge]="userCount" matBadgeColor="warn">account_circled</mat-icon>
+    </div>
+
+    <form fxLayout="column" [formGroup]="form">
+      <mat-form-field appearance="outline">
+        <mat-label>Firstname</mat-label>
+        <input matInput #firstname formControlName="firstname">
+        <mat-error *ngIf="form.get('firstname').errors?.serverError">
+          {{ form.get('firstname').errors?.serverError }}
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Lastname</mat-label>
+        <input matInput #lastname formControlName="lastname">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput #email formControlName="email">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Telephone</mat-label>
+        <input matInput #telephone formControlName="telephone">
+      </mat-form-field>
+    </form>
+    <app-stateful-button label="Save"
+                         (click)="save()"
+                         (stateChange)="onStateChange($event)"
+    >
+    </app-stateful-button>
+  </div>
 </div>
+
 
