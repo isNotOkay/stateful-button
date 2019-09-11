@@ -7,14 +7,15 @@ import {
   MatButtonModule,
   MatFormFieldModule,
   MatIconModule,
-  MatInputModule,
-  MatProgressSpinnerModule
+  MatInputModule, MatPaginatorModule,
+  MatProgressSpinnerModule, MatTableModule
 } from '@angular/material';
 import {AppComponent} from './app.component';
 import {StatefulButtonComponent} from './stateful-button/stateful-button.component';
 import {EditFormComponent} from './edit-form/edit-form.component';
 import {ReactiveFormsModule} from '@angular/forms';
-import { CreateFormComponent } from './create-form/create-form.component';
+import {CreateFormComponent} from './create-form/create-form.component';
+import {TableComponent} from './table/table.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { CreateFormComponent } from './create-form/create-form.component';
     StatefulButtonComponent,
     EditFormComponent,
     CreateFormComponent,
+    TableComponent
   ],
   imports: [
     BrowserModule,
@@ -33,9 +35,11 @@ import { CreateFormComponent } from './create-form/create-form.component';
     MatButtonModule,
     MatBadgeModule,
     MatProgressSpinnerModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatTableModule,
+    MatPaginatorModule
   ],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
 export class AppModule {
 }
