@@ -1,6 +1,13 @@
 
-.table {
+.custom-table {
 
+  .search {
+    padding: 10px 24px 0 24px;
+
+    .mat-form-field {
+      width: 350px;
+    }
+  }
 
   height: 537px;
 
@@ -10,10 +17,6 @@
     .mat-row {
       height: 36px;
     }
-  }
-
-  .mat-form-field {
-    width: 100%;
   }
 }
 
