@@ -9,13 +9,16 @@
           <mat-icon>clear</mat-icon>
         </button>
       </mat-form-field>
-      <button mat-stroked-button color="accent">
-        <mat-icon>search</mat-icon>
-      </button>
+      <div style="padding-bottom: 10px;">
+        <button mat-stroked-button color="accent">
+          <mat-icon>search</mat-icon>
+        </button>
+      </div>
     </div>
 
     <mat-progress-bar [ngClass]="{hidden: !loading}" mode="indeterminate"></mat-progress-bar>
-    <div fxFlex="grow" style="overflow-y: auto">
+
+    <perfect-scrollbar fxFlex="grow">
       <table mat-table [dataSource]="filteredUsers">
 
         <!--- Note that these columns can be defined in any order.
@@ -44,7 +47,8 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumns;  sticky: true"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
-    </div>
+    </perfect-scrollbar>
+
     <mat-progress-bar [ngClass]="{hidden: !loading}" mode="indeterminate"></mat-progress-bar>
     <mat-paginator [pageSize]="10" showFirstLastButtons></mat-paginator>
 

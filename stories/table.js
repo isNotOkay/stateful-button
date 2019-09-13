@@ -17,6 +17,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatBadgeModule} from "@angular/material/badge";
 import {TableComponent} from '../src/app/table/table.component';
 import {MatProgressBarModule} from "@angular/material/progress-bar";
+import {PerfectScrollbarModule} from "ngx-perfect-scrollbar";
 
 storiesOf('Table', module)
   .addDecorator(withKnobs)
@@ -40,7 +41,8 @@ storiesOf('Table', module)
         MatBadgeModule,
         MatTableModule,
         MatPaginatorModule,
-        MatProgressBarModule
+        MatProgressBarModule,
+        PerfectScrollbarModule
       ]
     }))
   .add('Basic', () => ({

@@ -16,6 +16,7 @@ import {EditFormComponent} from './edit-form/edit-form.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {CreateFormComponent} from './create-form/create-form.component';
 import {TableComponent} from './table/table.component';
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 
 @NgModule({
   declarations: [
@@ -38,9 +39,10 @@ import {TableComponent} from './table/table.component';
     ReactiveFormsModule,
     MatTableModule,
     MatPaginatorModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    PerfectScrollbarModule
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {
 }
