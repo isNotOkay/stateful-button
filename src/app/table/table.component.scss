@@ -1,6 +1,10 @@
 
 .custom-table {
 
+  .hidden {
+    opacity: 0;
+  }
+
   .search {
     padding: 10px 24px 0 24px;
 
@@ -9,7 +13,7 @@
     }
   }
 
-  height: 537px;
+  height: 551px;
 
   .mat-table {
     width: 100%;

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 export interface PeriodicElement {
   name: string;
@@ -17,21 +17,31 @@ const ELEMENT_DATA: PeriodicElement[] = [
   {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
   {position: 8, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
   {position: 9, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 10, name: 'Nitrogen', weight: 14.0067, symbol: 'N'}
+  {position: 10, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
 ];
 
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
-  styleUrls: ['./table.component.scss']
+  styleUrls: ['./table.component.scss'],
 })
 export class TableComponent implements OnInit {
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = ELEMENT_DATA;
+  loading: boolean;
 
-  constructor() { }
+  constructor() {
+  }
+
+  public searchx(): void {
+    this.loading = true;
+    setTimeout(() => {
+      this.loading = false;
+    }, 500);
+  }
 
   ngOnInit() {
   }
+
 
 }

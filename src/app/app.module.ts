@@ -7,8 +7,8 @@ import {
   MatButtonModule,
   MatFormFieldModule,
   MatIconModule,
-  MatInputModule, MatPaginatorModule,
-  MatProgressSpinnerModule, MatTableModule
+  MatInputModule, MatPaginatorModule, MatProgressBarModule,
+  MatProgressSpinnerModule, MatTableModule,
 } from '@angular/material';
 import {AppComponent} from './app.component';
 import {StatefulButtonComponent} from './stateful-button/stateful-button.component';
@@ -37,7 +37,8 @@ import {TableComponent} from './table/table.component';
     MatProgressSpinnerModule,
     ReactiveFormsModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatProgressBarModule
   ],
   bootstrap: [AppComponent]
 })

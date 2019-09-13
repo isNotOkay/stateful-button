@@ -16,6 +16,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatBadgeModule} from "@angular/material/badge";
 import {TableComponent} from '../src/app/table/table.component';
+import {MatProgressBarModule} from "@angular/material/progress-bar";
 
 storiesOf('Table', module)
   .addDecorator(withKnobs)
@@ -38,7 +39,8 @@ storiesOf('Table', module)
         ReactiveFormsModule,
         MatBadgeModule,
         MatTableModule,
-        MatPaginatorModule
+        MatPaginatorModule,
+        MatProgressBarModule
       ]
     }))
   .add('Basic', () => ({
