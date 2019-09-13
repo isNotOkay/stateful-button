@@ -1,7 +1,6 @@
 <div style="padding: 20px 40px;">
   <div class="custom-table mat-elevation-z8" fxLayout="column">
 
-
     <div class="search" fxLayout fxLayoutAlign="start center" fxLayoutGap="10px" (click)="searchx()">
       <mat-form-field floatLabel="never">
         <mat-label>Search</mat-label>
@@ -15,9 +14,8 @@
       </button>
     </div>
 
-
-    <div fxLayout="column" fxLayoutAlign="space-between" fxFlex="grow">
-      <mat-progress-bar [ngClass]="{hidden: !loading}" mode="indeterminate"></mat-progress-bar>
+    <mat-progress-bar [ngClass]="{hidden: !loading}" mode="indeterminate"></mat-progress-bar>
+    <div fxFlex="grow" style="overflow-y: auto">
       <table mat-table [dataSource]="filteredUsers">
 
         <!--- Note that these columns can be defined in any order.
@@ -46,9 +44,9 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
-      <mat-progress-bar [ngClass]="{hidden: !loading}" mode="indeterminate"></mat-progress-bar>
-      <mat-paginator [pageSize]="10" showFirstLastButtons></mat-paginator>
     </div>
+    <mat-progress-bar [ngClass]="{hidden: !loading}" mode="indeterminate"></mat-progress-bar>
+    <mat-paginator [pageSize]="10" showFirstLastButtons></mat-paginator>
 
   </div>
 </div>
