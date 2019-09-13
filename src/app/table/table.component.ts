@@ -1,24 +1,12 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {HttpClient, HttpResponse} from '@angular/common/http';
 
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
+export interface User {
+  id: string;
+  firstname: string;
+  lastname: number;
+  email: number;
 }
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 9, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 10, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-];
 
 @Component({
   selector: 'app-table',
@@ -26,22 +14,50 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./table.component.scss'],
 })
 export class TableComponent implements OnInit {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = ELEMENT_DATA;
+  displayedColumns: string[] = ['id', 'firstname', 'lastname', 'email'];
+  @ViewChild('search', {static: false}) searchFieldElementRef: ElementRef;
+  users: User[];
+  filteredUsers: User[];
   loading: boolean;
+  sortOrder = 'asc';
+  sortBy = 'id';
 
-  constructor() {
+  constructor(private httpClient: HttpClient) {
   }
 
   public searchx(): void {
-    this.loading = true;
-    setTimeout(() => {
-      this.loading = false;
-    }, 500);
+    /*  this.loading = true;
+      setTimeout(() => {
+        this.loading = false;
+      }, 500);*/
+    this.filter();
   }
 
   ngOnInit() {
+    this.httpClient.get('http://localhost:3000/users', {observe: 'response'})
+      .subscribe((res: HttpResponse<User[]>) => {
+        this.users = res.body;
+        this.filteredUsers = res.body;
+      });
   }
 
+  public filter() {
+    this.filteredUsers = this.users.filter((user) => {
+      return this.matchesSearchCriteria(user, this.searchFieldElementRef.nativeElement.value);
+    });
+  }
 
+  private matchesSearchCriteria(user: User, searchString: string): boolean {
+    const searchTerms = searchString.split(' ');
+    return searchTerms.reduce(
+      (booleanResult, searchTerm) =>
+        booleanResult &&
+        Boolean(Object.keys(user).find(key => user[key].toString().toLowerCase().includes(searchTerm.toLowerCase()))),
+      true);
+  }
+
+  sort(users, order) {
+    const usersSortedAscending = users.sort((firstUser, secondUser) => firstUser[this.sortBy] - secondUser[this.sortBy]);
+    return order === 'asc' ? usersSortedAscending : usersSortedAscending.reverse();
+  }
 }
