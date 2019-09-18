@@ -1,5 +1,6 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {HttpClient, HttpResponse} from '@angular/common/http';
+import {Sort} from '@angular/material';
 
 export interface User {
   id: string;
@@ -11,40 +12,53 @@ export interface User {
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
-  styleUrls: ['./table.component.scss'],
+  styleUrls: ['./table.component.scss']
 })
 export class TableComponent implements OnInit {
   displayedColumns: string[] = ['id', 'firstname', 'lastname', 'email'];
   @ViewChild('search', {static: false}) searchFieldElementRef: ElementRef;
-  users: User[];
+  private SERVER_USERS: User[];
   filteredUsers: User[];
   loading: boolean;
   sortOrder = 'asc';
   sortBy = 'id';
+  page: number;
+  offset: number;
+  limit = 10;
+  total: number;
 
   constructor(private httpClient: HttpClient) {
   }
 
+  public clear() {
+    this.searchFieldElementRef.nativeElement.value = '';
+    this.searchx();
+  }
+
   public searchx(): void {
-    /*  this.loading = true;
-      setTimeout(() => {
-        this.loading = false;
-      }, 500);*/
+    console.log('=== searchx ===');
+    this.page = 0;
     this.filter();
   }
 
   ngOnInit() {
     this.httpClient.get('http://localhost:3000/users', {observe: 'response'})
       .subscribe((res: HttpResponse<User[]>) => {
-        this.users = res.body;
-        this.filteredUsers = res.body;
+        this.SERVER_USERS = res.body;
+        this.page = 0;
+        this.filter();
       });
   }
 
   public filter() {
-    this.filteredUsers = this.users.filter((user) => {
+    this.filteredUsers = this.SERVER_USERS.filter((user) => {
       return this.matchesSearchCriteria(user, this.searchFieldElementRef.nativeElement.value);
     });
+    this.total = this.filteredUsers.length;
+    if (this.sortBy && this.sortOrder) {
+      this.filteredUsers = this.sort(this.filteredUsers, this.sortOrder);
+    }
+    this.filteredUsers = this.filteredUsers.slice(this.page * this.limit, this.page * this.limit + this.limit);
   }
 
   private matchesSearchCriteria(user: User, searchString: string): boolean {
@@ -57,7 +71,29 @@ export class TableComponent implements OnInit {
   }
 
   sort(users, order) {
-    const usersSortedAscending = users.sort((firstUser, secondUser) => firstUser[this.sortBy] - secondUser[this.sortBy]);
+    let usersSortedAscending;
+    if (this.sortBy === 'id') {
+      usersSortedAscending = users.sort((firstUser, secondUser) => firstUser[this.sortBy] - secondUser[this.sortBy]);
+    } else {
+      usersSortedAscending = users.sort((firstUser, secondUser) => firstUser[this.sortBy].localeCompare(secondUser[this.sortBy]));
+    }
     return order === 'asc' ? usersSortedAscending : usersSortedAscending.reverse();
+  }
+
+  onPageChange($event) {
+    this.page = $event.pageIndex;
+    console.log(this.page);
+    this.filter();
+  }
+
+  onSortChange(sort: Sort) {
+    this.page = 0;
+    this.sortBy = sort.active;
+    this.sortOrder = sort.direction;
+    if (!sort.direction) {
+      this.sortBy = 'id';
+      this.sortOrder = 'asc';
+    }
+    this.filter();
   }
 }

@@ -13,3 +13,7 @@ Access-Control-Allow-Origin: *
 }
 
 ###
+
+GET http://localhost:3000/users
+
+###
