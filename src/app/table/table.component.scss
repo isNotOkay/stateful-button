@@ -1,6 +1,10 @@
 
 .custom-table {
-  height: 551px;
+  height: 615px;
+
+  .ps__rail-x, .ps__rail-y {
+    z-index: 999;
+  }
 
   .hidden {
     opacity: 0;
@@ -17,6 +21,20 @@
   .mat-table {
     width: 100%;
 
+    .cdk-column-actions {
+      width: 40px;
+    }
+
+
+    td.mat-cell:last-of-type, td.mat-footer-cell:last-of-type, th.mat-header-cell:last-of-type {
+      padding-right: 0;
+    }
+
+
+    .mat-table-sticky:last-child:not(.mat-header-cell) {
+      border-left: 1px solid #e0e0e0;
+    }
+
     tr {
       cursor: pointer;
 
@@ -32,6 +50,7 @@
         }
       }
     }
+
     .expanded-detail-column {
       overflow: hidden;
       display: flex;

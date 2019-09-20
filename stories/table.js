@@ -19,6 +19,7 @@ import {TableComponent} from '../src/app/table/table.component';
 import {MatProgressBarModule} from "@angular/material/progress-bar";
 import {PerfectScrollbarModule} from "ngx-perfect-scrollbar";
 import {MatSortModule} from '@angular/material/sort';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 storiesOf('Table', module)
   .addDecorator(withKnobs)
@@ -44,7 +45,8 @@ storiesOf('Table', module)
         MatPaginatorModule,
         MatProgressBarModule,
         PerfectScrollbarModule,
-        MatSortModule
+        MatSortModule,
+        MatCheckboxModule
       ]
     }))
   .add('Basic', () => ({

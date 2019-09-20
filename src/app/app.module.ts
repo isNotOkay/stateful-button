@@ -18,6 +18,7 @@ import {CreateFormComponent} from './create-form/create-form.component';
 import {TableComponent} from './table/table.component';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import {MatSortModule} from '@angular/material/sort';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +42,8 @@ import {MatSortModule} from '@angular/material/sort';
     MatPaginatorModule,
     MatProgressBarModule,
     PerfectScrollbarModule,
-    MatSortModule
+    MatSortModule,
+    MatCheckboxModule
   ],
   bootstrap: [AppComponent],
 })
