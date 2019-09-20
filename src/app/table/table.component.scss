@@ -1,5 +1,6 @@
 
 .custom-table {
+  height: 551px;
 
   .hidden {
     opacity: 0;
@@ -13,14 +14,29 @@
     }
   }
 
-  height: 551px;
-
   .mat-table {
     width: 100%;
 
-    .mat-row {
-      height: 32px;
+    tr {
+      cursor: pointer;
+
+      &.mat-row {
+        height: 32px;
+
+        &.expanded-detail-row {
+          height: 0;
+        }
+
+        &.expanded-element-row td {
+          border-bottom-width: 0;
+        }
+      }
     }
+    .expanded-detail-column {
+      overflow: hidden;
+      display: flex;
+    }
+
   }
 }
 

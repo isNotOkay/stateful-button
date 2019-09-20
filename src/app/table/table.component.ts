@@ -1,6 +1,7 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {HttpClient, HttpResponse} from '@angular/common/http';
 import {Sort} from '@angular/material';
+import {animate, state, style, transition, trigger} from '@angular/animations';
 
 export interface User {
   id: string;
@@ -12,12 +13,20 @@ export interface User {
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
-  styleUrls: ['./table.component.scss']
+  styleUrls: ['./table.component.scss'],
+  animations: [
+    trigger('detailExpand', [
+      state('collapsed', style({height: '0px', minHeight: '0'})),
+      state('expanded', style({height: '*'})),
+      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)'))
+    ])
+  ]
 })
 export class TableComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'firstname', 'lastname', 'email'];
   @ViewChild('search', {static: false}) searchFieldElementRef: ElementRef;
   private SERVER_USERS: User[];
+  displayedColumns: string[] = ['id', 'firstname', 'lastname', 'email'];
+  expandedElement: User | null;
   filteredUsers: User[];
   loading: boolean;
   sortOrder = 'asc';
