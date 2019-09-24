@@ -9,6 +9,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "storybook": "start-storybook -s ./stories/mocks/assets",
+    "dev-server": "tsc -p ./server",
     "server": "node ./server/index.js"
   },
   "private": true,
